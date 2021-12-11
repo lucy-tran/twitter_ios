@@ -26,7 +26,7 @@ class HomeTableViewController: UITableViewController {
     @objc func loadTweets() {
         numberOfTweets = 20
         let url = "https://api.twitter.com/1.1/statuses/home_timeline.json"
-        let params = ["count" : numberOfTweets]
+        let params = ["count" : numberOfTweets!]
         
         TwitterAPICaller.client?.getDictionariesRequest(url: url, parameters: params, success: { (tweets: [NSDictionary]) in
         
@@ -45,7 +45,7 @@ class HomeTableViewController: UITableViewController {
         let url = "https://api.twitter.com/1.1/statuses/home_timeline.json"
         numberOfTweets += 20
         
-        let params = ["count": numberOfTweets]
+        let params = ["count": numberOfTweets!]
         
         TwitterAPICaller.client?.getDictionariesRequest(url: url, parameters: params, success: { (tweets: [NSDictionary]) in
         
@@ -55,7 +55,7 @@ class HomeTableViewController: UITableViewController {
             }
             self.tableView.reloadData()
         }, failure: { (Error) in
-            print("Could not retrieve tweets!")
+            print("Could not load more tweets!")
         })
     }
     
